@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RESERVATION PAGE</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<script src="script.js"></script>
+<div class="reservebox">
+  <div class="reservations">
+    <div class="room-number">COMPUTER LAB #3</div>
+    <form>
+      <label for="sched">Schedule:</label>
+      <input type="datetime-local" id="sched" name="sched">
+    </form>
+    <div class="room">
+      <div class="screen">SCREEN</div>
+      <div class="proftable">Prof's Table</div>
+      <table class="seattable">
+        <tbody>
+          <!-- Row 1 -->
+          <tr>
+            <td class="seat" id="seat1"></td>
+            <td class="seat" id="seat2"></td>
+            <td class="seat" id="seat3"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat4"></td>
+            <td class="seat" id="seat5"></td>
+            <td class="seat" id="seat6"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat7"></td>
+            <td class="seat" id="seat8"></td>
+            <td class="seat" id="seat9"></td>
+          </tr>
+          <!-- Row 2 -->
+          <tr>
+            <td colspan="11">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="seat" id="seat10"></td>
+            <td class="seat" id="seat11"></td>
+            <td class="seat" id="seat12"></td>
+            <td>&nbsp;</td>	
+            <td class="seat" id="seat13"></td>
+            <td class="seat" id="seat14"></td>
+            <td class="seat" id="seat15"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat16"></td>
+            <td class="seat taken" id="seat17"></td>
+            <td class="seat" id="seat18"></td>
+          </tr>
+          <!-- Row 3 -->
+          <tr>
+            <td colspan="11">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="seat" id="seat19"></td>
+            <td class="seat" id="seat20"></td>
+            <td class="seat" id="seat21"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat22"></td>
+            <td class="seat" id="seat23"></td>
+            <td class="seat" id="seat24"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat25"></td>
+            <td class="seat taken" id="seat26"></td>
+            <td class="seat" id="seat27"></td>
+          </tr>
+          <!-- Row 4 -->
+          <tr>
+            <td colspan="11">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="seat" id="seat28"></td>
+            <td class="seat" id="seat29"></td>
+            <td class="seat" id="seat30"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat31"></td>
+            <td class="seat" id="seat32"></td>
+            <td class="seat" id="seat33"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat34"></td>
+            <td class="seat" id="seat35"></td>
+            <td class="seat" id="seat36"></td>
+          </tr>
+          <!-- Row 5 -->
+          <tr>
+            <td colspan="11">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="seat" id="seat37"></td>
+            <td class="seat" id="seat38"></td>
+            <td class="seat" id="seat39"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat40"></td>
+            <td class="seat" id="seat41"></td>
+            <td class="seat" id="seat42"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat43"></td>
+            <td class="seat" id="seat44"></td>
+            <td class="seat" id="seat45"></td>
+          </tr>
+          <!-- Row 6 -->
+          <tr>
+            <td colspan="11">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="seat" id="seat46"></td>
+            <td class="seat" id="seat47"></td>
+            <td class="seat" id="seat48"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat49"></td>
+            <td class="seat" id="seat50"></td>
+            <td class="seat" id="seat51"></td>
+            <td>&nbsp;</td>
+            <td class="seat" id="seat52"></td>
+            <td class="seat" id="seat53"></td>
+            <td class="seat" id="seat54"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <span class="available"></span>
+        <span>Available</span>
+      </div>
+      <div class="legend-item">
+        <span class="taken"></span>
+        <span>Taken</span>
+      </div>
+    </div>
+
+    <button class="reserve-button">Reserve</button>
+  </div>
+</div>
+<div class="navbar">
+    <img class="logo" src="dlsu.png">
+    <a class="homepage" href=student_home.html>Home</a>
+    <a class="user_profile" href="student_userprofile.html">My Reservations</a>
+    <a class="user_profile" href="student_userprofile.html">View Profile</a>
+    <a class="logout" href="#" onclick="logout(); return false;">Logout</a>
+  </div>
+  <script>
+    var seats = document.querySelectorAll('.seat');
+    var reserveButton = document.querySelector('.reserve-button');
+
+    // Add click event listener to each seat
+    seats.forEach(function (seat) {
+      seat.addEventListener('click', function () {
+        if (!this.classList.contains('taken')) {
+          this.classList.toggle('selected');
+          updateReserveButtonStatus();
+        }
+      });
+    });
+
+    // Update reserve button status based on selected seats
+    function updateReserveButtonStatus() {
+      var selectedSeats = document.querySelectorAll('.seat.selected');
+      reserveButton.style.display = selectedSeats.length > 0 ? 'block' : 'none';
+    }
+
+    // Example: Redirect to a confirmation page after reservation
+    reserveButton.addEventListener('click', function () {
+      var selectedSeats = document.querySelectorAll('.seat.selected');
+      var seatNumbers = [];
+      selectedSeats.forEach(function (seat) {
+        seatNumbers.push(seat.getAttribute('id'));
+      });
+
+      var schedule = document.getElementById('sched').value;
+
+      // Redirect to confirmation page with seat numbers and schedule
+      window.location.href = 'confirmation.html?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
+    });
+  </script>
+</body>
+</html>
