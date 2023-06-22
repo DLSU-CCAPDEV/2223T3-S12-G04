@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  height: 1000px;
+  margin: 0;
+  padding: 0;
+
+  background-image: url(computer_labs.png);
+  background-size: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar {
+  background-color: #1e7e51;
+  height: 75px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar img.logo {
+      height: 50px;
+      margin-right: 20px;
+    }
+
+.navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 40px;
+    }
+
+.navbar .homepage{
+  margin-left: auto;
+}
+
+.navbar .welcome{
+  color: #fff;
+  font-weight: 800;
+  font-size: 32px;
+}
+
+.reservebox {
+  margin: 0 auto;
+  max-width: 95%;
+  max-height: 100%;
+  background-color: #849b94;
+  position: sticky;
+  margin-top: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #EFEFEF;
+}
+
+.registerbox {
+  margin: 0 auto;
+  max-width: 30%;
+  max-height: 100%;
+  background-color: #849b94;
+  position: sticky;
+  margin-top: 125px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #EFEFEF;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #EFEFEF;
+  margin: 20px;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: url(computers.png);
+  background-size: 100%;
+  background-position: 100%;
+  width: 97.6%;
+
+ 
+}
+.reservedetails{
+  background-color: #FFFFFF;
+  border: 2px solid #EFEFEF;
+  height: 120px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.reservetext{
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+   
+}
+.test2 {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #EFEFEF;
+  margin: 30px;
+  max-width: 80%;
+}
+
+.profilepic {
+  width: 250px;
+  height: 250px;
+  margin: 30px;
+  background: url(profilepic.png) no-repeat;
+  background-size: 100%;
+
+  position: relative;
+  display: inline-block;
+}
+
+.profilepic:hover {
+  background: url(profilepic_hover.png) no-repeat;
+  background-size: 100%;
+
+  width: 250px;
+  height: 250px;
+  margin: 30px;
+
+  position: relative;
+  display: inline-block;
+}
+
+.userdetails {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+
+.username {
+  font-weight: 700;
+  font-size: 38px;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+  top: 125px;
+
+}
+
+.userlabel {
+  font-weight: 600;
+  font-size: 18px;
+  font-style: italic; 
+  position: absolute;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.descriptiontext {
+  font-weight: 800;
+  font-size: 30px;
+  position: relative;
+  left: 20px;
+}
+
+
+
+.form-group {
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 300px;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"]
+ {
+  width: 90%;
+  max-height: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.dropdown{
+  text-align-last: center;
+  margin-bottom: 10px;
+}
+/*.login-button, .register-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #1e7e51;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+*/
+.login-button, .register-button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #1e7e51;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none; /* Remove underline */
+  outline: none; /* Remove outline when focused */
+  box-sizing: border-box;
+}
+
+.login-button:hover, .register-button:hover {         /* hover color */
+  background-color: #15573f;
+}
+
+.login-button:active, .register-button:active {        
+  background-color: #0e3526;
+}
+
+
+
+.register-link {         /* register positioning*/
+  text-align: center;
+  margin-top: 300px;
+  margin-left: -230px;
+
+}
+
+.register-link button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #1e7e51;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+label {
+  display: block; /*puts label on top */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.clean-button, .delete-button {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 3px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.delete-button:hover{
+  background-color: #FF2400;
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.clean-button:hover {
+  background-color: #45a049;
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.reservationstable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.table_contents{
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+  background-color: #FFFFFF;
+}
+
+.deleteprofile{
+  margin-left: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.reservations {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin-top: 50px;
+    }
+
+
+.room-number {
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+  background-color: #1e7e51;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.room {
+  width: 600px;
+  height: 490px;
+  background-color: #fff;
+  display: flex;
+  border: 1px solid #000;
+  flex-direction: column;
+}
+
+.seattable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+.screen {
+  width: 300px;
+  height: 20px;
+  align-self: center;
+  margin-bottom: 20px;
+  border: 1px solid #000;
+}
+
+.proftable {
+  width: 60px;
+  height: 35px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+  align-self: flex-start;
+  border: 1px solid #000;
+}
+
+.seat {
+  width: 30px;
+  height: 20px;
+  padding: 5px;
+  background-color: green;
+  cursor: pointer;
+}
+
+.seat.taken {
+  background-color: red;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background-color: blue;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.legend-item span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.available {
+  background-color: green;
+}
+
+.taken {
+  background-color: red;
+}
+
+.reserve-button {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1e7e51;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.reserve-button:hover {
+  background-color: #15573f;
+}
+
+.reserve-button:active {
+  background-color: #0e3526;
+}
+
+.register-link p {   /*makes the "dont have an account?" text bold*/
+  font-weight: bold;
+}
+
+.register-link a {      /*removes the weird blue line in the text*/
+  text-decoration: none;
+}
