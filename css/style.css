@@ -92,21 +92,21 @@ body {
  
 }
 .reservedetails{
-  background-color: #FFFFFF;
-  border: 2px solid #EFEFEF;
-  height: 120px;
-  width: 250px;
-  display: flex;
+	background-color: #FFFFFF;
+	border: 2px solid #EFEFEF;
+	height: 120px;
+	width: 250px;
+	display: flex;
   justify-content: center;
   align-items: center;
 
 }
 
 .reservetext{
-  text-align: center;
-  font-weight: 700;
-  font-size: 16px;
-   
+	text-align: center;
+	font-weight: 700;
+	font-size: 16px;
+	 
 }
 .test2 {
   display: flex;
@@ -160,7 +160,7 @@ body {
 .userlabel {
   font-weight: 600;
   font-size: 18px;
-  font-style: italic; 
+  font-style: italic;	
   position: absolute;
 }
 
@@ -204,7 +204,7 @@ input[type="email"]
   text-align-last: center;
   margin-bottom: 10px;
 }
-/*.login-button, .register-button {
+.login-button, .register-button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -217,32 +217,6 @@ input[type="email"]
   text-align: center;
   margin-top: 10px;
 }
-*/
-.login-button, .register-button{
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 50px;
-  background-color: #1e7e51;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 10px;
-  text-decoration: none; /* Remove underline */
-  outline: none; /* Remove outline when focused */
-  box-sizing: border-box;
-}
-
-.login-button:hover, .register-button:hover {         /* hover color */
-  background-color: #15573f;
-}
-
-.login-button:active, .register-button:active {        
-  background-color: #0e3526;
-}
-
 
 
 .register-link {         /* register positioning*/
@@ -439,12 +413,4 @@ textarea {
 
 .reserve-button:active {
   background-color: #0e3526;
-}
-
-.register-link p {   /*makes the "dont have an account?" text bold*/
-  font-weight: bold;
-}
-
-.register-link a {      /*removes the weird blue line in the text*/
-  text-decoration: none;
 }
