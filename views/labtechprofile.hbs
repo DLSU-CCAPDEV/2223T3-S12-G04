@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>LAB TECH USER PROFILE PAGE</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <script defer src="/JavaScript/script.js"></script>
+	<div class="reservebox">
+		<div class="userdetails">
+		<span class="profilepic"></span>
+		<span class="username">ARREN MATTHEW ANTIOQUIA <br> <span class="userlabel">LAB TECHNICIAN</span> </span>
+		</div>
+		
+		<div class="description">
+		<span class="descriptiontext">DESCRIPTION:</span>
+		<label for="freeform"></label>
+		<br>
+
+		<textarea id="freeform" name="freeform" rows="4" cols="50"></textarea>
+		<br>
+		
+		<button class="clean-button" onclick="alert('This should update!')">Update</button>
+		</div>
+		<div class="currentreservations">
+		<span class="descriptiontext">CURRENT RESERVATIONS:</span>
+		<table class="reservationstable">
+			<tr>
+				<th class="table_contents">Computer Laboratory</th>
+				<th class="table_contents">Student's Name</th>
+				<th class="table_contents">Seat Number</th>
+				<th class="table_contents">Date of request</th>
+				<th class="table_contents">Time of request</th>
+				<th class="table_contents">Date of reservation</th>
+				<th class="table_contents">Time of reservation</th>
+				<th class="table_contents">Edit</th>
+				<th class="table_contents">Remove</th>
+			</tr>
+			<tr>
+				<td class="table_contents">Computer Lab #2</td>
+				<td class="table_contents">Kian Rafael Lagado</td>
+				<td class="table_contents">13</td>
+				<td class="table_contents">June 23, 2023</td>
+				<td class="table_contents">4:51PM</td>
+				<td class="table_contents">June 25, 2023</td>
+				<td class="table_contents">10:30-11:00AM</td>
+				<td class="table_contents"><a href="#" onclick="edit_reservation();">Edit</a></td>
+				<td class="table_contents"><a href="#" onclick="remove_reservation();">Remove</a></td>
+			</tr>
+			<tr>
+				<td class="table_contents">Computer Lab #2</td>
+				<td class="table_contents">Daniel Abe</td>
+				<td class="table_contents">20</td>
+				<td class="table_contents">June 23, 2023</td>
+				<td class="table_contents">5:43PM</td>
+				<td class="table_contents">June 25, 2023</td>
+				<td class="table_contents">10:30-11:00AM</td>
+				<td class="table_contents"><a href="#" onclick="edit_reservation();">Edit</a></td>
+				<td class="table_contents"><a href="#" onclick="remove_reservation();">Remove</a></td>
+			</tr>
+			<tr>
+				<td class="table_contents">Computer Lab #2</td>
+				<td class="table_contents">Alfonso Karl Dionisio</td>
+				<td class="table_contents">25</td>
+				<td class="table_contents">June 24, 2023</td>
+				<td class="table_contents">8:41PM</td>
+				<td class="table_contents">June 25, 2023</td>
+				<td class="table_contents">9:00-9:30AM</td>
+				<td class="table_contents"><a href="#" onclick="edit_reservation();">Edit</a></td>
+				<td class="table_contents"><a href="#" onclick="remove_reservation();">Remove</a></td>
+			</tr>
+			<tr>
+				<td class="table_contents">Computer Lab #3</td>
+				<td class="table_contents">Jesca Acosta</td>
+				<td class="table_contents">26</td>
+				<td class="table_contents">June 28, 2023</td>
+				<td class="table_contents">5:47PM</td>
+				<td class="table_contents">June 29, 2023</td>
+				<td class="table_contents">10:30-11:00AM</td>
+				<td class="table_contents"><a href="#" onclick="edit_reservation();">Edit</a></td>
+				<td class="table_contents"><a href="#" onclick="remove_reservation();">Remove</a></td>
+			</tr>
+			<tr>
+				<td class="table_contents">Computer Lab #3</td>
+				<td class="table_contents">Alfonso Karl Dionisio</td>
+				<td class="table_contents">17</td>
+				<td class="table_contents">June 28, 2023</td>
+				<td class="table_contents">3:02PM</td>
+				<td class="table_contents">June 29, 2023</td>
+				<td class="table_contents">11:00-11:30AM</td>
+				<td class="table_contents"><a href="#" onclick="edit_reservation();">Edit</a></td>
+				<td class="table_contents"><a href="#" onclick="remove_reservation();">Remove</a></td>
+			</tr>
+		</table>
+		</div>
+	</div>
+	
+	<div class="navbar">
+    <img class="logo" src="/images/dlsu.png">
+	<span class="welcome">DLSU Computer Laboratories</span>
+	<a class="homepage" href="/labtechhome">Home</a>
+	<a class="user_profile" href="/labtechprofile">Students' Reservations</a>
+    <a class="user_profile" href="/labtechprofile">View Profile</a>
+	<a class="logout" href="#" onclick="logout(); return false;">Logout</a>
+  </div>
+	
+</body>
+
+</html>
