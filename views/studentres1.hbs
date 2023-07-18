@@ -10,10 +10,16 @@
 <div class="reservebox">
   <div class="reservations">
     <div class="room-number">COMPUTER LAB #1</div>
-    <form>
-      <label for="sched">Schedule:</label>
-      <input type="datetime-local" id="sched" name="sched">
-    </form>
+    <div class="dropdown">
+	<label for="timeslot">Select Timeslot:</label>
+	<select name="timeslot" id="timeslot" style="width: 100%;">
+		<option value="time1">9:00 AM - 10:30 AM</option>
+		<option value="time2">11:00 AM - 12:30 AM</option>
+		<option value="time3">1:00 PM - 2:30 PM</option>
+		<option value="time4">3:00 PM - 4:30 PM</option>
+		<option value="time5">5:00 PM - 6:30 PM</option>
+	</select>
+	</div>
     <div class="room">
       <div class="screen">SCREEN</div>
       <div class="proftable">Prof's Table</div>
