@@ -2,7 +2,7 @@ function delete_Profile() {
 	let deletion = "Are you sure you want to delete your user profile?";
 		if (confirm(deletion) == true) {
 			deletion = alert("Sucessfully deleted! Redirecting to home page.");
-			location.href = '/guesthome';
+			location.href = '../html/guest_home.html';
 		}
 		else {
 			deletion = alert("Canceled!");
@@ -12,14 +12,14 @@ function delete_Profile() {
 
 function guest_Register() {
          alert("You have to register first!");
-         location.href = '/register';
+         location.href = '../html/register.html';
         }
 
 function logout() {
 	let logout = "Are you sure you want to logout?";
 		if (confirm(logout) == true) {
 			logout = alert("Sucessfully logged out! Redirecting to home page.");
-			location.href = '/guesthome';
+			location.href = '../html/guest_home.html';
 		}
 		else {
 			logout = alert("Canceled!");
@@ -39,9 +39,9 @@ function redirectToPage() {
       var selectedRole = document.getElementById("roles").value;
 
       if (selectedRole === "student") {
-        window.location.href = "/studenthome";
+        window.location.href = "../html/student_home.html";
       } else if (selectedRole === "tech") {
-        window.location.href = "/labtechhome";
+        window.location.href = "../html/labtech_home.html";
       }
     }
 function validateLogin() {
@@ -65,7 +65,6 @@ function validateRegistration() {
 	if (roles === "" || firstname === "" || lastname === "" || email === "" || password === "") {
 	alert("Please fill in all the fields.");
 	} else {
-	// Proceed with registration
 	redirectToPage();
 	}
 }
