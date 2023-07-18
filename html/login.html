@@ -11,11 +11,18 @@
   <form>
     <div class="registerbox">
       <div class="form-group">
+        
         <label for="username">DLSU E-mail</label>
         <input type="text" id="username" name="username" placeholder="Enter your DLSU E-mail">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Enter your password">
-
+        <div class="dropdown">
+          <label for="roles">I am logging in as a:</label>
+          <select name="roles" id="roles" style="width: 50%;">
+            <option value="student">Student</option>
+            <option value="tech">Lab Technician</option>
+          </select>
+        </div>  
         <div class="login-link">
           <button type="button" class="login-button" onclick="validateLogin()">Login</button>
         </div>
@@ -38,4 +45,3 @@
 </body>
 
 </html>
-
