@@ -24,6 +24,7 @@ app.get(`/studentprofile`, controller.redirectStudentProfile);
 app.post(`/checkAcct`, controller.checkAcct); // calling function to LOGIN the website
 app.get(`/profile/:email`, controller.getProfile); // calling function to put in URL the profile signed in
 app.get(`/logout`, controller.redirectRoot); // calling function to LOGOUT the website
-app.get(`/profile`, controller.getUserData); // calling function to VIEW PROFILE 
+app.get(`/profile`, controller.getUserData); // calling function to VIEW PROFILE
+app.post('/register', controller.postRegister); //calling function to REGISTER to the website
 
 module.exports = app;
