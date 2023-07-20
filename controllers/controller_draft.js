@@ -1,3 +1,7 @@
+const db = require('../models/db.js');
+
+const User = require('../models/UserModel.js');
+
 const controller = {
 
     getRoot: function(req, res) {
@@ -67,7 +71,39 @@ const controller = {
 	
 	getReserve: function(req, res) { //function to input reservation that user has made
 		// if possible, this is where we take user input of reserving a seat and placing it into our database.
-	}
+	},
+
+	postRegister: async function (req, res) {
+
+        /*
+            when submitting forms using HTTP POST method
+            the values in the input fields are stored in `req.body` object
+            each <input> element is identified using its `name` attribute
+            Example: the value entered in <input type="text" name="fName">
+            can be retrieved using `req.body.fName`
+        */
+        var roles = req.body.roles;
+        var firstname = req.body.firstname;
+        var lastname = req.body.lastname;
+        var email = req.body.email;
+        var pw = req.body.pw;
+
+        var user = {
+        	roles: roles,
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            pw: pw
+        }
+        var response = await db.insertOne(User, user);
+
+        if(response != null){
+            res.redirect('/success?roles=' + roles + '&firstname=' + firstname +'&lastname=' + lastname + '&email=' + email);
+        }
+        else {
+            res.render('error');
+        }
+    }
 	
 }
 module.exports = controller;
