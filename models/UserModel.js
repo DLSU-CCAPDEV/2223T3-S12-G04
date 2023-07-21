@@ -19,6 +19,12 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+	
+	idNum: {
+		type: Number,
+		required: true
+	},
+	
     pw: {
         type: String,
         required: true
