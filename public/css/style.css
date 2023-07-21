@@ -146,6 +146,7 @@ body {
 }
 
 .username {
+  text-transform: uppercase;
   font-weight: 700;
   font-size: 38px;
   vertical-align: baseline;
@@ -158,6 +159,7 @@ body {
 }
 
 .userlabel {
+  text-transform: uppercase;
   font-weight: 600;
   font-size: 18px;
   font-style: italic; 
@@ -191,7 +193,8 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="firstname"],
-input[type="lastname"]
+input[type="lastname"],
+input[type="number"]
  {
   width: 90%;
   max-height: 5px;
@@ -220,7 +223,7 @@ input[type="lastname"]
   margin-top: 10px;
 }
 */
-.login-button, .register-button{
+.login-button, #register-button{
   display: block;
   width: 100%;
   padding: 10px;
