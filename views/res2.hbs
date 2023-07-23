@@ -12,7 +12,7 @@
   <script defer src="/JavaScript/script.js"></script>
 <div class="reservebox">
   <div class="reservations">
-    <div class="room-number">COMPUTER LAB #2</div>
+    <div class="room-number">COMPUTER LAB #3</div>
     <div class="dropdown">
 	<label for="timeslot">Select Timeslot:</label>
 	<select name="timeslot" id="timeslot" style="width: 100%;">
@@ -51,12 +51,12 @@
             <td class="seat" id="seat11"></td>
             <td class="seat" id="seat12"></td>
             <td>&nbsp;</td>	
-            <td class="seat taken" id="seat13"></td>
+            <td class="seat" id="seat13"></td>
             <td class="seat" id="seat14"></td>
             <td class="seat" id="seat15"></td>
             <td>&nbsp;</td>
             <td class="seat" id="seat16"></td>
-            <td class="seat" id="seat17"></td>
+            <td class="seat taken" id="seat17"></td>
             <td class="seat" id="seat18"></td>
           </tr>
           <!-- Row 3 -->
@@ -65,15 +65,15 @@
           </tr>
           <tr>
             <td class="seat" id="seat19"></td>
-            <td class="seat taken" id="seat20"></td>
+            <td class="seat" id="seat20"></td>
             <td class="seat" id="seat21"></td>
             <td>&nbsp;</td>
             <td class="seat" id="seat22"></td>
             <td class="seat" id="seat23"></td>
             <td class="seat" id="seat24"></td>
             <td>&nbsp;</td>
-            <td class="seat taken" id="seat25"></td>
-            <td class="seat" id="seat26"></td>
+            <td class="seat" id="seat25"></td>
+            <td class="seat taken" id="seat26"></td>
             <td class="seat" id="seat27"></td>
           </tr>
           <!-- Row 4 -->
@@ -145,39 +145,5 @@
     <button class="reserve-button">Reserve</button>
   </div>
 </div>
-  <script>
-    var seats = document.querySelectorAll('.seat');
-    var reserveButton = document.querySelector('.reserve-button');
-
-    // Add click event listener to each seat
-    seats.forEach(function (seat) {
-      seat.addEventListener('click', function () {
-        if (!this.classList.contains('taken')) {
-          this.classList.toggle('selected');
-          updateReserveButtonStatus();
-        }
-      });
-    });
-
-    // Update reserve button status based on selected seats
-    function updateReserveButtonStatus() {
-      var selectedSeats = document.querySelectorAll('.seat.selected');
-      reserveButton.style.display = selectedSeats.length > 0 ? 'block' : 'none';
-    }
-
-    // Example: Redirect to a confirmation page after reservation
-    reserveButton.addEventListener('click', function () {
-      var selectedSeats = document.querySelectorAll('.seat.selected');
-      var seatNumbers = [];
-      selectedSeats.forEach(function (seat) {
-        seatNumbers.push(seat.getAttribute('id'));
-      });
-
-      var schedule = document.getElementById('sched').value;
-
-      // Redirect to confirmation page with seat numbers and schedule
-      window.location.href = 'confirmation.html?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
-    });
-  </script>
 </body>
 </html>
