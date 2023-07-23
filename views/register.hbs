@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Register</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <script defer src="/JavaScript/script.js"></script>
+</head>
+
+<body>
+  <div class="registerbox">
+    <div class="form-group">
+      <div class="dropdown">
+        <form id="register" method ="post">
+        <label for="roles">I am registering as a:</label>
+        <select name="roles" id="roles" style="width: 50%;">
+          <option value="student">Student</option>
+          <option value="lab technician">Lab Technician</option>
+        </select>
+      </div>
+
+      <label for="firstname">First Name</label>
+      <input type="text" id="firstname" name="firstname" class="field" placeholder="First Name" required>
+
+      <label for="lastname">Last Name</label>
+      <input type="text" id="lastname" name="lastname" class="field" placeholder="Last Name" required>
+
+      <label for="email">DLSU E-mail</label>
+      <input type="email" id="email" name="email" class="field" placeholder="E-mail" required>
+		
+	  <label for="idNum">ID Number</label>
+      <input type="number" id="idNum" name="idNum" class="field" placeholder="ID Number" required>
+      <br>
+
+      <label for="pw">Password</label>
+      <input type="password" id="pw" name="pw" class="field" placeholder="Password" required>
+
+      <br>
+		
+	  <input type="submit" id="register-button" value="Register">
+      <!-- <button class="register-button" onclick="validateRegistration()">Register</button> -->
+      </form>
+    </div>
+  </div>
+
+  <div class="navbar">
+  <img class="logo" src="/images/dlsu.png">
+  <span class="welcome">DLSU Computer Laboratories</span>
+  <a class="homepage" href="/guesthome">Home</a>
+  <a class="login" href="/login">Login</a>
+  <a class="register" href="/register">Register</a>
+</div>
+</body>
+
+</html>
