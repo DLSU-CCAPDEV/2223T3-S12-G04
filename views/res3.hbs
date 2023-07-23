@@ -145,39 +145,5 @@
     <button class="reserve-button">Reserve</button>
   </div>
 </div>
-  <script>
-    var seats = document.querySelectorAll('.seat');
-    var reserveButton = document.querySelector('.reserve-button');
-
-    // Add click event listener to each seat
-    seats.forEach(function (seat) {
-      seat.addEventListener('click', function () {
-        if (!this.classList.contains('taken')) {
-          this.classList.toggle('selected');
-          updateReserveButtonStatus();
-        }
-      });
-    });
-
-    // Update reserve button status based on selected seats
-    function updateReserveButtonStatus() {
-      var selectedSeats = document.querySelectorAll('.seat.selected');
-      reserveButton.style.display = selectedSeats.length > 0 ? 'block' : 'none';
-    }
-
-    // Example: Redirect to a confirmation page after reservation
-    reserveButton.addEventListener('click', function () {
-      var selectedSeats = document.querySelectorAll('.seat.selected');
-      var seatNumbers = [];
-      selectedSeats.forEach(function (seat) {
-        seatNumbers.push(seat.getAttribute('id'));
-      });
-
-      var schedule = document.getElementById('sched').value;
-
-      // Redirect to confirmation page with seat numbers and schedule
-      window.location.href = 'confirmation.html?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
-    });
-  </script>
 </body>
 </html>
