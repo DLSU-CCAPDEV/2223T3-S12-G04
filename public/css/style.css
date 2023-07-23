@@ -223,7 +223,7 @@ input[type="number"]
   margin-top: 10px;
 }
 */
-.login-button, #register-button{
+#login-button, #register-button{
   display: block;
   width: 100%;
   padding: 10px;
