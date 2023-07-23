@@ -28,7 +28,32 @@ var UserSchema = new mongoose.Schema({
     pw: {
         type: String,
         required: true
-    }
+    },
+	
+	seatNum: {
+		type: String,
+		required: false
+	},
+	
+	DateReq: {
+		type: String,
+		required: false
+	},
+	
+	DateTime: {
+		type: String,
+		required: false
+	},
+	
+	ReserveDate: {
+		type: String,
+		required: false
+	},
+	
+	ReserveTime: {
+		type: String,
+		required: false
+	}
 });
 
 module.exports = mongoose.model('User', UserSchema);
