@@ -145,5 +145,38 @@
     <button class="reserve-button">Reserve</button>
   </div>
 </div>
+{{script}}
+<script defer src="/JavaScript/script.js"></script>
+<script>
+  var seats = document.querySelectorAll('.seat');
+    var reserveButton = document.querySelector('.reserve-button');
+
+    seats.forEach(function (seat) {
+      seat.addEventListener('click', function () {
+        if (!this.classList.contains('taken')) {
+          this.classList.toggle('selected');
+          updateReserveButtonStatus();
+        }
+      });
+    });
+
+    function updateReserveButtonStatus() {
+      var selectedSeats = document.querySelectorAll('.seat.selected');
+      reserveButton.style.display = selectedSeats.length > 0 ? 'block' : 'none';
+    }
+
+    reserveButton.addEventListener('click', function () {
+      var selectedSeats = document.querySelectorAll('.seat.selected');
+      var seatNumbers = [];
+      selectedSeats.forEach(function (seat) {
+        seatNumbers.push(seat.getAttribute('id'));
+      });
+
+      var schedule = document.getElementById('sched').value;
+
+      window.location.href = 'confirmation.html?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
+    });
+</script>
+{{/script}}
 </body>
 </html>
