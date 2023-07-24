@@ -137,7 +137,29 @@ const reservationController = {
         else {
             res.render('error');
         }
+    },
+	confirmReservation: async function (req, res) {
+        // Extract the reservation details from the request body
+        const { seats, timeslot } = req.body;
+
+        // Save the reservation data to the database using the Reservation model
+        try {
+            await db.insertOne(Reservation, {
+                seats: seats,
+                timeslot: timeslot,
+                
+            });
+
+            // If the reservation is successfully saved, you can send a success response
+            res.json({ success: true });
+        } catch (err) {
+            console.error('Error:', err);
+            // If an error occurs while saving the reservation, you can send an error response
+            res.status(500).json({ success: false, error: 'Failed to confirm reservation' });
+        }
     }
+
+	
 }
 
 /*
