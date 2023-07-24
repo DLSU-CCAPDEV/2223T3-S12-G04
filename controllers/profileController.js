@@ -55,6 +55,28 @@ const profileController = {
         else {
             res.render('error');
         }
+    },
+
+    postProfile: async function (req, res) {
+        var updated_desc = req.body.freeform;
+
+        this.getProfile();
+
+        var respone = await db.updateOne(idNum === req.params.idNum, {profileDesc: updated_desc}, function (error, doc){
+            if (err){
+                console.log(err);
+            }
+            else{
+                console.log("Updated Doc: ", doc);
+            }
+        });
+
+        if(response =! null){
+            res.redirect('profile/idNum');
+        }
+        else{
+            res.redirect('error');
+        }
     }
 }
 
