@@ -10,7 +10,6 @@ const User = require('../models/UserModel.js');
 // Fetch the reservation data based on the profileId
 async function fetchReservationData(profileId) {
     // Logic to fetch the reservation data from the database
-    // ... Your code to fetch the reservation data ...
     
     const reservationData = {
         firstname: '',
