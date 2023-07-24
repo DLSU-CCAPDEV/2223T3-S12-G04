@@ -53,6 +53,11 @@ var UserSchema = new mongoose.Schema({
 	ReserveTime: {
 		type: String,
 		required: false
+	},
+
+	profileDesc: {
+		type: String,
+		required: false
 	}
 });
 
