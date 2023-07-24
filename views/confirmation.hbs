@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>CONFIRMATION PAGE</title>
-  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  <title>RESERVATION CONFIRMATION</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
-  <script defer src="../JavaScript/script.js"></script>
 <body>
+  {{> header}}
 
-<p> test <p>
+  <div class="confirmation-box">
+    <h1>Reservation Confirmation</h1>
+    <p>Name: {{firstname}} {{lastname}}</p>
+    <p>ID Number: {{idNum}}</p>
+    <p>Roles: {{roles}}</p>
+    
+  </div>
 
+  {{!-- Include partial for the reservation details --}}
+  {{> reservationDetails}}
+
+  {{script}}
+  <script defer src="/JavaScript/script.js"></script>
 </body>
-
 </html>
