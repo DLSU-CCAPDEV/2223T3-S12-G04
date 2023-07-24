@@ -148,35 +148,37 @@
 <script defer src="/JavaScript/script.js"></script>
 <script>
   var seats = document.querySelectorAll('.seat');
-    var reserveButton = document.querySelector('.reserve-button');
+var reserveButton = document.querySelector('.reserve-button');
 
-    // Add click event listener to each seat
-    seats.forEach(function (seat) {
-      seat.addEventListener('click', function () {
-        if (!this.classList.contains('taken')) {
-          this.classList.toggle('selected');
-          updateReserveButtonStatus();
-        }
-      });
-    });
-
-    function updateReserveButtonStatus() {
-      var selectedSeats = document.querySelectorAll('.seat.selected');
-      reserveButton.style.display = selectedSeats.length > 0 ? 'block' : 'none';
+// Add click event listener to each seat
+seats.forEach(function (seat) {
+  seat.addEventListener('click', function () {
+    if (!this.classList.contains('taken')) {
+      this.classList.toggle('selected');
+      updateReserveButtonStatus();
     }
+  });
+});
 
-    reserveButton.addEventListener('click', function () {
-      var selectedSeats = document.querySelectorAll('.seat.selected');
-      var seatNumbers = [];
-      selectedSeats.forEach(function (seat) {
-        seatNumbers.push(seat.getAttribute('id'));
-      });
+function updateReserveButtonStatus() {
+  var selectedSeats = document.querySelectorAll('.seat.selected');
+  reserveButton.style.display = selectedSeats.length > 0 ? 'block' : 'none';
+}
 
-      var schedule = document.getElementById('sched').value;
+reserveButton.addEventListener('click', function () {
+  var selectedSeats = document.querySelectorAll('.seat.selected');
+  var seatNumbers = [];
+  selectedSeats.forEach(function (seat) {
+    seatNumbers.push(seat.getAttribute('id'));
+  });
 
-      window.location.href = 'confirmation.html?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
-    });
+  var schedule = document.getElementById('sched').value;
+
+  window.location.href = 'confirmation.html?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
+});
+
 </script>
 {{/script}}
+
 </body>
 </html>
