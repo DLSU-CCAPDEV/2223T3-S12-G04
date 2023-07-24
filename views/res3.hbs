@@ -166,16 +166,32 @@
     }
 
     reserveButton.addEventListener('click', function () {
-      var selectedSeats = document.querySelectorAll('.seat.selected');
-      var seatNumbers = [];
-      selectedSeats.forEach(function (seat) {
-        seatNumbers.push(seat.getAttribute('id'));
-      });
+  var selectedSeats = document.querySelectorAll('.seat.selected');
+  var seatNumbers = [];
+  selectedSeats.forEach(function (seat) {
+    seatNumbers.push(seat.getAttribute('id'));
+  });
 
-      var schedule = document.getElementById('sched').value;
+  var timeslot = document.getElementById('timeslot').value;
 
-      window.location.href = 'confirmation.html?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
+  // Send a POST request to the server with the selected seat numbers and timeslot
+  fetch('/confirmReservation', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ seats: seatNumbers, timeslot: timeslot }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Render the confirmation page with the reservation details
+      window.location.href = '/confirmation';
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
+});
+
 </script>
 
 </body>
