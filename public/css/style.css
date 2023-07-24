@@ -166,6 +166,13 @@ body {
   position: absolute;
 }
 
+.userdesc {
+  font-weight: 500;
+  font-size: 12px;
+  font-style: italic; 
+  position: absolute;
+}
+
 .description {
   display: flex;
   flex-direction: column;
