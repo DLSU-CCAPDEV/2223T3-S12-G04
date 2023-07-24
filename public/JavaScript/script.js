@@ -101,3 +101,10 @@ var seats = document.querySelectorAll('.seat');
       // Redirect to confirmation page with seat numbers and schedule
       window.location.href = '/confirmation?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
     });
+
+	function remove_reservation(reservationId) {
+		const row = document.querySelector(`tr[data-reservation-id="${reservationId}"]`);
+		if (row) {
+		  row.remove();
+		}
+	}
