@@ -21,34 +21,28 @@ const loginController = {
         */
         var email = req.body.email;
         var pw = req.body.pw;
-		
-		var query = {email: req.params.email};
-		
-        // fields to be returned
-        var projection = 'firstname lastname idNum roles';
-		
-        var response = await db.findOne(User, query, projection);
-
-        if(response != null){
 			
-			var roles = req.query.roles;
-			var firstname = req.query.firstname;
-			var lastname = req.query.lastname;
-			var idNum = req.query.idNum;
-			var details = {
-                roles: req.query.roles,
-				firstname: req.query.firstname,
-				lastname: req.query.lastname,
-				idNum: req.query.idNum,
+			var result = await User.findOne({ email });
+			
+			if (result != null){
+				var roles = result.roles;
+				var firstname = result.firstname;
+				var lastname = result.lastname;
+				var idNum = result.idNum;
+				var details = {
+					roles: roles,
+					firstname: firstname,
+					lastname: lastname,
+					idNum: idNum,
             };
-			res.render('success', details);
-			res.redirect('/success?roles=' + roles + '&firstname=' + firstname +'&lastname=' + lastname + '&idNum=' + idNum);
-			}
-        else {
+				if (details != undefined){
+					res.redirect('/success?roles=' + roles + '&firstname=' + firstname +'&lastname=' + lastname + '&idNum=' + idNum);
+		}
+		else {
             res.render('error');
-        }
-    }
-	
+	}
+}
+	}
 }
 
 module.exports = loginController;
