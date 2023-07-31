@@ -14,6 +14,9 @@ const reservationController = require('../controllers/reservationController.js')
 
 const loginController = require('../controllers/loginController.js');
 
+// import module `validation` from `../helpers/validation.js`
+const validation = require('../helpers/validation.js');
+
 const app = express();
 
 
@@ -26,13 +29,13 @@ app.get(`/login`, loginController.getLogin); //calling function to LOGIN.hbs
 app.post(`/login`, loginController.postLogin);
 
 app.get(`/register`, registerController.getRegister); // calling function to REGISTER.hbs
-app.post(`/register`, registerController.postRegister); //calling function to REGISTER
+app.post(`/register`, validation.signupValidation(), registerController.postRegister); //calling function to REGISTER
+app.get(`/getCheckID`, registerController.getCheckID);
 app.get(`/success`, successController.getSuccess);
 app.get(`/success`, successController.getHomeSuccess);
 app.get(`/home/:idNum`, homeController.getHome);
 
 app.get(`/profile/:idNum`, profileController.getProfile);
-app.post(`/profile/:idNum`, profileController.postProfile);
 
 app.get(`/res1/:idNum`, reservationController.getProfile1);
 app.get(`/res2/:idNum`, reservationController.getProfile2);
