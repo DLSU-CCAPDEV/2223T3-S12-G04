@@ -24,10 +24,10 @@ const validation = {
         var validation = [
 
             // checks if `fName` is not empty
-            check('fName', 'First name should not be empty.').notEmpty(),
+            check('firstname', 'First name should not be empty.').notEmpty(),
 
             // checks if lName is not empty
-            check('lName', 'Last name should not be empty.').notEmpty(),
+            check('lastname', 'Last name should not be empty.').notEmpty(),
 
             // checks if `idNum` contains exactly 8 digits
             check('idNum', 'ID number should contain 8 digits.')
