@@ -20,6 +20,10 @@ NOTE: For Steps 3, and 5-9, please do not include the quotation marks of what is
 
 8.) To install mongoose, type: "npm install mongoose"
 
-9.) Run the server by typing: "node index.js". The output should show "app listening at port 3000".
+9.) To install express-validator, type: "npm install express-validator"
 
-10.) Go to your website browser and type "localhost:3000" to run the code.
+10.) To install bcrypt for hashing, type: "npm install bcrypt"
+
+11.) Run the server by typing: "node index.js". The output should show "app listening at port 3000".
+
+12.) Go to your website browser and type "localhost:3000" to run the code.
