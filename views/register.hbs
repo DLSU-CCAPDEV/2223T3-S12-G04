@@ -4,7 +4,9 @@
 <head>
   <title>Register</title>
   <link href="/css/style.css" rel="stylesheet" type="text/css">
-  <script defer src="/JavaScript/script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script defer src="/JavaScript/register.js"></script>
+  <script defer src="/JavaScript/validator.min.js"></script>
 </head>
 
 <body>
@@ -19,25 +21,30 @@
         </select>
       </div>
 
+	  <br>
       <label for="firstname">First Name</label>
-      <input type="text" id="firstname" name="firstname" class="field" placeholder="First Name" required>
+      <input type="text" id="firstname" name="firstname" class="field" placeholder="First Name" required><br>
+	  <p id="firstnameError" class="error">{{firstnameError}}</p>
 
       <label for="lastname">Last Name</label>
-      <input type="text" id="lastname" name="lastname" class="field" placeholder="Last Name" required>
+      <input type="text" id="lastname" name="lastname" class="field" placeholder="Last Name" required><br>
+      <p id="lastnameError" class="error">{{lastnameError}}</p>
 
       <label for="email">DLSU E-mail</label>
-      <input type="email" id="email" name="email" class="field" placeholder="E-mail" required>
+      <input type="email" id="email" name="email" class="field" placeholder="E-mail" required><br>
+      <p id="emailError" class="error">{{emailError}}</p>
 		
 	  <label for="idNum">ID Number</label>
-      <input type="number" id="idNum" name="idNum" class="field" placeholder="ID Number" required>
-      <br>
+      <input type="number" id="idNum" name="idNum" class="field" placeholder="ID Number" required><br>
+      <p id="idNumError" class="error">{{idNumError}}</p>
 
       <label for="pw">Password</label>
-      <input type="password" id="pw" name="pw" class="field" placeholder="Password" required>
+      <input type="password" id="pw" name="pw" class="field" placeholder="Password" required><br>
+      <p id="pwError" class="error">{{pwError}}</p>
 
       <br>
 		
-	  <input type="submit" id="register-button" value="Register">
+	  <input type="submit" id="register-button" value="Register" disabled>
       <!-- <button class="register-button" onclick="validateRegistration()">Register</button> -->
       </form>
     </div>
