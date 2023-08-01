@@ -36,6 +36,7 @@ app.get(`/success`, successController.getHomeSuccess);
 app.get(`/home/:idNum`, homeController.getHome);
 
 app.get(`/profile/:idNum`, profileController.getProfile);
+app.post(`/profile/:idNum`, profileController.postProfile);
 
 app.get(`/res1/:idNum`, reservationController.getProfile1);
 app.get(`/res2/:idNum`, reservationController.getProfile2);
