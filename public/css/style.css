@@ -168,9 +168,10 @@ body {
 
 .userdesc {
   font-weight: 500;
-  font-size: 12px;
-  font-style: italic; 
-  position: absolute;
+  font-size: 15px;
+  position: relative;
+  width: auto;
+  text-transform: none;
 }
 
 .description {
