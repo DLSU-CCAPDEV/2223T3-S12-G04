@@ -57,7 +57,8 @@ var UserSchema = new mongoose.Schema({
 
 	profileDesc: {
 		type: String,
-		required: false
+		required: false,
+		default: "No Description"
 	}
 });
 
