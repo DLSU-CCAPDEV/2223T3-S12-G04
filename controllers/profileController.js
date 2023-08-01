@@ -21,7 +21,7 @@ const profileController = {
         var query = {idNum: req.params.idNum};
 
         // fields to be returned
-        var projection = 'firstname lastname idNum roles';
+        var projection = 'firstname lastname idNum roles profileDesc';
 
         /*
             calls the function findOne()
@@ -41,7 +41,8 @@ const profileController = {
                 firstname: result.firstname,
                 lastname: result.lastname,
 				idNum: result.idNum,
-                roles: result.roles
+                roles: result.roles,
+                profileDesc: result.profileDesc
             };
 
             // render `../views/profile.hbs`
@@ -59,23 +60,22 @@ const profileController = {
 
     postProfile: async function (req, res) {
         var updated_desc = req.body.freeform;
-
-        this.getProfile();
-
-        var respone = await db.updateOne(idNum === req.params.idNum, {profileDesc: updated_desc}, function (error, doc){
-            if (err){
-                console.log(err);
+        var idNum = req.params.idNum;
+    
+        // var profile = this.getProfile();
+    
+        try {
+            // Update the profile description based on the idNum
+            var response = await User.updateOne({ idNum: idNum }, { $set: { profileDesc: updated_desc } });
+    
+            if (response != null) {
+                res.redirect(`/profile/${idNum}`);
+            } else {
+                res.redirect('/error');
             }
-            else{
-                console.log("Updated Doc: ", doc);
-            }
-        });
-
-        if(response =! null){
-            res.redirect('profile/idNum');
-        }
-        else{
-            res.redirect('error');
+        } catch (error) {
+            console.log(error);
+            res.redirect('/error');
         }
     }
 }
