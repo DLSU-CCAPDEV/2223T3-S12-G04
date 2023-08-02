@@ -1,10 +1,19 @@
 <nav id="header">
+	<div class="navbar">
+    <img class="logo" src="/images/dlsu.png">
+	<span class="welcome">DLSU Computer Laboratories</span>
+	<a class="homepage" href="/guesthome">Home</a>
+	<a class="login" href="/login">Login</a>
+    <a class="register" href="/register">Register</a>
+		
+	{{#if flag}}
     <div class="navbar">
     <img class="logo" src="/images/dlsu.png">
 	<span class="welcome">DLSU Computer Laboratories</span>
 	<a class="homepage" href="/home/{{idNum}}">Home</a>
     <a class="user_profile" href="/profile/{{idNum}}">Reservations</a>
     <a class="user_profile" href="/profile/{{idNum}}">View Profile</a>
-	<a class="logout" href="#" onclick="logout(); return false;">Logout</a>
+	<a class="logout" href="/logout" onclick="logout(); return false;">Logout</a>
+	{{/if}}
   </div>
 </nav>
