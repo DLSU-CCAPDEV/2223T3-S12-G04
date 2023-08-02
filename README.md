@@ -24,6 +24,8 @@ NOTE: For Steps 3, and 5-9, please do not include the quotation marks of what is
 
 10.) To install bcrypt for hashing, type: "npm install bcrypt"
 
-11.) Run the server by typing: "node index.js". The output should show "app listening at port 3000".
+11.) To install express-session, type: "npm install express-session"
 
-12.) Go to your website browser and type "localhost:3000" to run the code.
+12.) Run the server by typing: "node index.js". The output should show "app listening at port 3000".
+
+13.) Go to your website browser and type "localhost:3000" to run the code.
