@@ -17,13 +17,8 @@ function guest_Register() {
 
 function logout() {
 	let logout = "Are you sure you want to logout?";
-		if (confirm(logout) == true) {
 			logout = alert("Sucessfully logged out! Redirecting to home page.");
 			location.href = '/guesthome';
-		}
-		else {
-			logout = alert("Canceled!");
-		}
 	document.getElementById("logout").innerHTML = logout;
 }
 
