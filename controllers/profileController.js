@@ -22,7 +22,17 @@ const profileController = {
 
         // fields to be returned
         var projection = 'firstname lastname idNum roles profileDesc';
+		
+		 var details = {};
 
+		if(req.session && req.session.idNum) {
+			details.flag = true;
+			details.name = req.session.name;
+			details.uidNum = req.session.idNum;
+		}
+
+		else
+			details.flag = false;
         /*
             calls the function findOne()
             defined in the `database` object in `../models/db.js`
@@ -42,9 +52,17 @@ const profileController = {
                 lastname: result.lastname,
 				idNum: result.idNum,
                 roles: result.roles,
-                profileDesc: result.profileDesc
+				profileDesc: result.profileDesc
             };
-
+		if(req.session && req.session.idNum) {
+        details.flag = true;
+        details.name = req.session.name;
+        details.idNum = req.session.idNum;
+		}
+		
+		else {
+			details.flag = false;
+		}
             // render `../views/profile.hbs`
             res.render('profile', details);
         }
@@ -54,7 +72,7 @@ const profileController = {
             render the error page
         */
         else {
-            res.render('error');
+            res.render('error', details);
         }
     },
 

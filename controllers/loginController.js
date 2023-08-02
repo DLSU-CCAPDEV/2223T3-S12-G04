@@ -1,4 +1,4 @@
-
+const session = require(`express-session`);
 // import module `bcrypt`
 const bcrypt = require('bcrypt');
 
@@ -11,7 +11,18 @@ const User = require('../models/UserModel.js');
 const loginController = {
 	
 	getLogin: function (req, res){
-		res.render('login');
+		
+		if(req.session && req.session.idNum){
+			res.redirect('/profile/' + req.session.idNum);
+		}
+		else{
+			
+			var details = {
+				flag: false
+			};
+			
+		res.render('login', details);
+		}
 	},
 	
 	postLogin: async function (req, res) {
@@ -37,7 +48,7 @@ const loginController = {
 					roles: roles,
 					firstname: firstname,
 					lastname: lastname,
-					idNum: idNum,
+					idNum: idNum
             };
 			
 			//bcrypt hash function to add here
@@ -47,24 +58,36 @@ const loginController = {
                         if the entered password
                         match the hashed password from the database
                     */
-                    if(equal)
-                        /*
-                            redirects the client to `/profile/idNum`
-                            where `idNum` is equal
-                            to the `idNum` entered by the user
-                            defined in `../routes/routes.js`
-                            which calls getProfile() method
-                            defined in `./profileController.js`
-                        */
+					if (!req.session) {
+					console.error('Session middleware is not properly configured.');
+					// Handle the error appropriately
+					return;
+					}
+					
+                    if(equal){
+                        req.session.idNum = idNum;
+						req.session.roles = roles;
+						req.session.firstname = firstname;
+						req.session.lastname = lastname;
+						req.session.save( async function (err) {
+						if (err) {
+						console.error('Error saving session:', err);
+						// Handle the error appropriately
+						return;
+						}
                         res.redirect('/success?roles=' + roles + '&firstname=' + firstname +'&lastname=' + lastname + '&idNum=' + idNum);
-
+						});
+					}
                     /*
                         else if the entered password
                         does not match the hashed password from the database
                     */
                     else {
-                        var details = {error: `ID Number and/or Password
-                            is incorrect.`}
+                        var details = {
+							flag: false,
+							error: `ID Number and/or Password
+                            is incorrect.`
+						};
 
                         /*
                             render `../views/login.hbs`
@@ -77,8 +100,10 @@ const loginController = {
 
             // else if a user with `idNum` equal to `idNum` does not exist
             else {
-                var details = {error: `ID Number and/or Password is
-                    incorrect.`}
+                var details = {
+					flag: false,
+					error: `ID Number and/or Password is incorrect.`
+				};
 
                 /*
                     render `../views/login.hbs`

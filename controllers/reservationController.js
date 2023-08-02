@@ -43,8 +43,15 @@ const reservationController = {
 				idNum: result.idNum,
                 roles: result.roles
             };
-
-            // render `../views/profile.hbs`
+		if(req.session && req.session.idNum) {
+        details.flag = true;
+        details.name = req.session.name;
+        details.idNum = req.session.idNum;
+		}
+		
+		else {
+			details.flag = false;
+		}
             res.render('res1', details);
         }
 
@@ -84,8 +91,15 @@ const reservationController = {
 				idNum: result.idNum,
                 roles: result.roles
             };
-
-            // render `../views/profile.hbs`
+		if(req.session && req.session.idNum) {
+        details.flag = true;
+        details.name = req.session.name;
+        details.idNum = req.session.idNum;
+		}
+		
+		else {
+			details.flag = false;
+		}
             res.render('res2', details);
         }
 
@@ -125,8 +139,15 @@ const reservationController = {
 				idNum: result.idNum,
                 roles: result.roles
             };
-
-            // render `../views/profile.hbs`
+		if(req.session && req.session.idNum) {
+        details.flag = true;
+        details.name = req.session.name;
+        details.idNum = req.session.idNum;
+		}
+		
+		else {
+			details.flag = false;
+		}
             res.render('res3', details);
         }
 

@@ -2,47 +2,48 @@ const db = require('../models/db.js');
 
 const User = require('../models/UserModel.js');
 
+const session = require(`express-session`);
+
 const controller = {
 	getFavicon: function (req, res) {
         res.status(204);
     },
 	
-    getRoot: function(req, res) {
-        res.render(`guesthome`); // Get guest home page
-    },
+    getIndex: function (req, res) {
+
+        // checks if a user is logged-in by checking the session data
+        if(req.session && req.session.idNum) {
+
+            /*
+                redirects the client to `/profile` using HTTP GET,
+                defined in `../routes/routes.js`
+                passing values using URL
+                which calls getProfile() method
+                defined in `./profileController.js`
+            */
+            res.redirect('/home/' + req.session.idNum);
+        }
+
+        // else if a user is not yet logged-in
+        else {
+
+            /*
+                sets `details.flag` to false
+                to hide the profile and logout tabs in the nav bar
+            */
+            var details = {
+                flag: false
+            };
+
+            // render `../views/index.hbs`
+            res.render('guesthome', details);
+        }
+	},
 
     redirectRoot: function(req, res) {
         res.redirect(`/`); // Back to guest home page when logging out
-    },
-	getHome: function(req, res){
-		res.render(`home`);
-	},
+    }
 	
-    checkAcct: function(req, res) {
-        var email = req.body.email;
-        var password = req.body.pw;
-		
-		// We can put here an if statement, depending on their role if student or lab tech
-        res.redirect(`/profile/` + email); // we add another one when created if statement for separation of getting student and lab tech home pages
-    },
-
-    getProfile: function(req, res) { //function to put in URL
-        var email = req.params.email;
-
-        res.render(`profile`, {email: email});
-    },
-	
-	getUserData: function(req, res) { //function to display name in user profile
-	
-	// we call email variable for our if statement checker
-		var email = req.params.email;
-		// if it is possible, we make an if statement here so that we can base the email logged in the website to get all of its data registered in the database.
-		
-	},
-	
-	getReserve: function(req, res) { //function to input reservation that user has made
-		// if possible, this is where we take user input of reserving a seat and placing it into our database.
-	}
 	
 }
 module.exports = controller;

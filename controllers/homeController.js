@@ -43,7 +43,15 @@ const homeController = {
 				idNum: result.idNum,
                 roles: result.roles
             };
-
+		if(req.session && req.session.idNum) {
+        details.flag = true;
+        details.name = req.session.name;
+        details.idNum = req.session.idNum;
+		}
+		
+		else {
+			details.flag = false;
+		}
             // render `../views/profile.hbs`
             res.render('home', details);
         }

@@ -14,7 +14,6 @@ const successController = {
         as defined in `../routes/routes.js`
     */
     getSuccess: function (req, res) {
-
         /*
             when passing values using HTTP GET method
             the values are stored in the req.query object
@@ -27,9 +26,19 @@ const successController = {
             lastname: req.query.lastname,
 			idNum: req.query.idNum,
         };
-
+		
+		if(req.session && req.session.idNum) {
+        details.flag = true;
+        details.name = req.session.name;
+        details.idNum = req.session.idNum;
+		}
+		
+		else {
+			details.flag = false;
         // render `../views/success.hbs`
-        res.render('success', details);
+		}
+		
+		        res.render('success', details);
 	},
 	
 	getHomeSuccess: async function (req, res) {
@@ -60,7 +69,16 @@ const successController = {
 				idNum: result.idNum,
                 roles: result.roles
             };
-
+		if(req.session && req.session.idNum) {
+        details.flag = true;
+        details.name = req.session.name;
+        details.idNum = req.session.idNum;
+		}
+		
+		else {
+			details.flag = false;
+        // render `../views/success.hbs`
+		}
             // render `../views/profile.hbs`
             res.render('home', details);
         }

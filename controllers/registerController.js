@@ -14,7 +14,17 @@ const User = require('../models/UserModel.js');
 const registerController = {
 	
 	getRegister: function (req, res){
-		res.render('register');
+		var details = {};
+		
+		if(req.session && req.session.idNum){
+			details.flag = true;
+			details.name = req.session.name;
+			details.idNum = req.session.idNum;
+		}
+		else{
+			details.flag = false;
+			res.render('register', details);
+		}
 	},
 	
 	postRegister: async function (req, res) {
@@ -27,10 +37,19 @@ const registerController = {
         errors = errors.errors;
 
         var details = {};
+		
+		if(req.session && req.session.idNum){
+			details.flag = true;
+			details.name = req.session.name;
+			details.idNum = req.session.idNum;
+		}
+		else{	
+			details.flag = false;
         for(i = 0; i < errors.length; i++)
             details[errors[i].param + 'Error'] = errors[i].msg;
 
         res.render('register', details);
+		}
     }
         /*
             when submitting forms using HTTP POST method
@@ -59,11 +78,20 @@ const registerController = {
 			idNum: idNum,
             pw: hash
         }
-        var flag = await db.insertOne(User, user);
-		
-                    if(flag) { 
+        var response = await db.insertOne(User, user);
+			
+						req.session.idNum = idNum;
+						req.session.roles = roles;
+						req.session.firstname = firstname;
+						req.session.lastname = lastname;
+						req.session.save( async function (err) {
+						if (err) {
+						console.error('Error saving session:', err);
+						// Handle the error appropriately
+						return;
+						}
                         res.redirect('/success?roles=' + roles + '&firstname=' + firstname +'&lastname=' + lastname + '&idNum=' + idNum);
-                    }
+						});
             });
         }
     },
