@@ -59,7 +59,44 @@ var UserSchema = new mongoose.Schema({
 		type: String,
 		required: false,
 		default: "No Description"
-	}
+	},
+
+	reservations: [
+		{
+		  reservationId: {
+			type: mongoose.Schema.Types.ObjectId,
+			required: true
+		  },
+		  computerLab: {
+			type: String,
+			required: true
+		  },
+		  studentName: {
+			type: String,
+			required: true
+		  },
+		  seatNumber: {
+			type: String,
+			required: true
+		  },
+		  dateOfRequest: {
+			type: String,
+			required: true
+		  },
+		  timeOfRequest: {
+			type: String,
+			required: true
+		  },
+		  dateOfReservation: {
+			type: String,
+			required: true
+		  },
+		  timeOfReservation: {
+			type: String,
+			required: true
+		  }
+		}
+	]
 });
 
 module.exports = mongoose.model('User', UserSchema);
