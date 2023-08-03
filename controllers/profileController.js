@@ -21,7 +21,7 @@ const profileController = {
         var query = {idNum: req.params.idNum};
 
         // fields to be returned
-        var projection = 'firstname lastname idNum roles profileDesc';
+        var projection = 'firstname lastname idNum roles profileDesc reservations';
 		
 		 var details = {};
 
@@ -52,7 +52,8 @@ const profileController = {
                 lastname: result.lastname,
 				idNum: result.idNum,
                 roles: result.roles,
-				profileDesc: result.profileDesc
+				profileDesc: result.profileDesc,
+                reservations: result.reservations
             };
 		if(req.session && req.session.idNum) {
         details.flag = true;
