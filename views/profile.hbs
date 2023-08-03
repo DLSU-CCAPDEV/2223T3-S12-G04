@@ -7,7 +7,7 @@
 </head>
 
 <body>
-{{> header flag=flag name=name uidNum=uidNum}}
+<!-- {{> header flag=flag name=name uidNum=uidNum}} -->
   <script defer src="/JavaScript/script.js"></script>
 	<div class="reservebox">
 		<div class="userdetails">
@@ -27,6 +27,40 @@
 			<input class="clean-button" onclick="alert('This should update!')" type="submit" value="Update">
 		</form>
 		</div>
+		<div class="currentreservations">
+			<span class="descriptiontext">CURRENT RESERVATIONS:</span>
+			{{#if reservations}}
+				{{#each reservations}}
+				<table class="reservationstable">
+					<tr>
+					<th class="table_contents">Computer Laboratory</th>
+					<th class="table_contents">Student's Name</th>
+					<th class="table_contents">Seat Number</th>
+					<th class="table_contents">Date of request</th>
+					<th class="table_contents">Time of request</th>
+					<th class="table_contents">Date of reservation</th>
+					<th class="table_contents">Time of reservation</th>
+					<th class="table_contents">Edit</th>
+					<th class="table_contents">Remove</th>
+					</tr>
+					<tr data-reservation-id="{{reservationId}}">
+					<td class="table_contents">{{computerLab}}</td>
+					<td class="table_contents">{{studentName}}</td>
+					<td class="table_contents">{{seatNumber}}</td>
+					<td class="table_contents">{{dateOfRequest}}</td>
+					<td class="table_contents">{{timeOfRequest}}</td>
+					<td class="table_contents">{{dateOfReservation}}</td>
+					<td class="table_contents">{{timeOfReservation}}</td>
+					<td class="table_contents"><a href="#" onclick="edit_reservation();">Edit</a></td>
+					<td class="table_contents"><a href="#" onclick="remove_reservation();">Remove</a></td>
+					</tr>
+				</table>
+				{{/each}}
+			{{else}}
+				<p class="noRes_text">No reservations found</p>
+			{{/if}}
+		</div>
+		<!-- This is the hard-coded format of the table
 		<div class="currentreservations">
 		<span class="descriptiontext">CURRENT RESERVATIONS:</span>
 		<table class="reservationstable">
@@ -98,9 +132,10 @@
 			</tr>
 		</table>
 		</div>
+		-->
 		<div class="deleteprofile"><button class="delete-button" onclick="delete_Profile()">Delete</button></div>
 	</div>
-	
+	{{> header flag=flag name=name uidNum=uidNum}}
 </body>
 
 </html>
