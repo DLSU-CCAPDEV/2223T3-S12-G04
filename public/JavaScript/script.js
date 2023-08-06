@@ -22,6 +22,7 @@ function logout() {
 	document.getElementById("logout").innerHTML = logout;
 }
 
+/*
 function edit_reservation() {
 	alert('Edited!');
 }
@@ -29,6 +30,7 @@ function edit_reservation() {
 function remove_reservation() {
 	alert('Removed!');
 }
+*/
 
 function redirectToPage() {
       var selectedRole = document.getElementById("roles").value;
@@ -97,9 +99,53 @@ var seats = document.querySelectorAll('.seat');
       window.location.href = '/confirmation?seats=' + seatNumbers.join(',') + '&schedule=' + schedule;
     });
 
+	/*
 	function remove_reservation(reservationId) {
 		const row = document.querySelector(`tr[data-reservation-id="${reservationId}"]`);
 		if (row) {
 		  row.remove();
 		}
 	}
+	*/
+
+	$(document).ready(function() {
+		// Event listener for the "Remove" buttons
+		$('.delete-button').click(function() {
+			var reservationId = $(this).closest('tr').attr('id'); // Get the reservationId from the closest parent <tr>
+			var idNum = 12048233; // Use the value of idNum from your template (if it's available)
+	  
+			if (confirm('Are you sure you want to remove this reservation?')) {
+				// Make an AJAX request to delete the reservation
+				$.ajax({
+					url: `/delete/${idNum}/${reservationId}`,
+					method: 'GET',
+					success: function (data) {
+						// On successful deletion, remove the table row from the DOM
+						$('#' + reservationId).remove();
+					},
+					error: function () {
+						alert('Failed to remove the reservation.');
+					}
+				});
+			}
+		});
+	});
+
+	function edit_reservation(idNum, computerLab) {
+		let edit = "Are you sure you want to edit your reservation?";
+	
+		if(confirm(edit) == true){
+			if(computerLab === 1)
+				window.location.href = "/res1/" + idNum;
+			
+			else if(computerLab === 2)
+				window.location.href = "/res2/" + idNum;
+			
+			else if(computerLab === 3)
+				window.location.href = "/res3/" + idNum;
+		}
+		else{
+			edit = alert("Canceled!");
+		}
+	}
+
