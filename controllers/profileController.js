@@ -53,7 +53,12 @@ const profileController = {
 				idNum: result.idNum,
                 roles: result.roles,
 				profileDesc: result.profileDesc,
-                reservations: result.reservations
+                reservations: result.reservations,
+                seatNum: result.seatNumber,
+                DateReq: result.DateofRequest,
+                DateTime: result.timeofRequest,
+                ReserveDate: result.dateofReservation,
+                ReserveTime: result.timeofReservation
             };
 		if(req.session && req.session.idNum) {
         details.flag = true;
@@ -96,9 +101,108 @@ const profileController = {
             console.log(error);
             res.redirect('/error');
         }
+    },
+
+    editReservations: async function (req, res) {
+        if(req.session && req.session.idNum) {
+			details.flag = true;
+			details.name = req.session.name;
+			details.uidNum = req.session.idNum;
+		}
+
+		else
+			details.flag = false;
+
+        var projection = 'firstname lastname idNum roles profileDesc reservations';
+		
+		var details = {};
+
+        var idNum = req.params.idNum;
+    
+        try {
+            var user = await User.findOne({ idNum: idNum }, projection);
+            if (!user) {
+                // User with the specified idNum not found
+                res.redirect('/error');
+                return;
+            }
+    
+            // Check each reservation and redirect based on the computerLab value
+            for (const reservation of user.reservations) {
+                if (reservation.computerLab === 1) {
+                    res.redirect(`/res1/${idNum}`);
+                    return;
+                } else if (reservation.computerLab === 2) {
+                    res.redirect(`/res2/${idNum}`);
+                    return;
+                } else if (reservation.computerLab === 3) {
+                    res.redirect(`/res3/${idNum}`);
+                    return;
+                }
+            }
+    
+            // If no reservation with the specified computerLab value is found, redirect to error
+            res.redirect('/error');
+        } catch (error) {
+            console.log(error);
+            res.redirect('/error');
+        }
+    },
+
+    deleteReservation: async function (req, res) {
+        if(req.session && req.session.idNum) {
+			details.flag = true;
+			details.name = req.session.name;
+			details.uidNum = req.session.idNum;
+		}
+
+		else
+			details.flag = false;
+
+        const idNum = req.params.idNum;
+
+        const user = await User.findOne({ idNum });
+
+        const reservationId = user.reservations.reservationId;
+    
+        try {
+            // Use Mongoose's `deleteOne` method to remove the reservation with the given reservationId
+            const result = await User.deleteOne({ 'reservations.reservationsId': reservationId });
+    
+            if (result.deletedCount === 0) {
+            // If deletedCount is 0, it means the reservation was not found for the given user
+            return res.status(404).json({ success: false, error: 'Reservation not found' });
+            }
+    
+            // Send a JSON response to indicate success
+            res.json({ success: true });
+        } catch (error) {
+            console.log(error);
+            // Send a JSON response with the error message
+            res.status(500).json({ success: false, error: error.message });
+        }
+    },
+
+    deleteProfile: async function (req, res) {
+        if(req.session && req.session.idNum) {
+			details.flag = true;
+			details.name = req.session.name;
+			details.uidNum = req.session.idNum;
+		}
+
+        else
+            details.flag = false;
+
+        const idNum = req.params.idNum;
+
+        try {
+            const result = await User.deleteOne({ idNum });
+        } catch (error) {
+            console.log(error);
+            res.redirect('/error');
+        }
     }
 }
-
 /*
     exports the object `profileController` (defined above)
     when another script exports from this file
