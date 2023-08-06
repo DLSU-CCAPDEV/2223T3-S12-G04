@@ -4,6 +4,7 @@
 <head>
   <title>USER PROFILE PAGE</title>
   <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -11,7 +12,9 @@
   <script defer src="/JavaScript/script.js"></script>
 	<div class="reservebox">
 		<div class="userdetails">
-		<span class="profilepic"></span>
+		<span>
+			<img class="profilepic" src="/images/default.jpg">
+		</span>
 		<span class="username"> {{firstname}} {{lastname}} <br> <span class="userlabel">{{roles}} </span> <span class="userdesc">{{profileDesc}}</span> </span>
 		</div>
 		
@@ -43,7 +46,7 @@
 					<th class="table_contents">Edit</th>
 					<th class="table_contents">Remove</th>
 					</tr>
-					<tr data-reservation-id="{{reservationId}}">
+					<tr id="{{reservationId}}">
 					<td class="table_contents">{{computerLab}}</td>
 					<td class="table_contents">{{studentName}}</td>
 					<td class="table_contents">{{seatNumber}}</td>
@@ -51,8 +54,8 @@
 					<td class="table_contents">{{timeOfRequest}}</td>
 					<td class="table_contents">{{dateOfReservation}}</td>
 					<td class="table_contents">{{timeOfReservation}}</td>
-					<td class="table_contents"><a href="#" onclick="edit_reservation();">Edit</a></td>
-					<td class="table_contents"><a href="#" onclick="remove_reservation();">Remove</a></td>
+					<td class="table_contents"><a href="#" onclick="edit_reservation('{{idNum}}, {{computerLab}}');">Edit</a></td>
+					<td class="table_contents"><button class="delete-button">Remove</button></td>
 					</tr>
 				</table>
 				{{/each}}
