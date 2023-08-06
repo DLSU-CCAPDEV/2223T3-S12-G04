@@ -40,6 +40,9 @@ app.get(`/home/:idNum`, homeController.getHome);
 
 app.get(`/profile/:idNum`, profileController.getProfile);
 app.post(`/profile/:idNum`, profileController.postProfile);
+app.delete(`/delete`, profileController.deleteProfile);
+app.get(`/profile/:idNum`, profileController.editReservations);
+app.delete(`/delete`, profileController.deleteProfile);
 
 app.get(`/res1/:idNum`, reservationController.getProfile1);
 app.get(`/res2/:idNum`, reservationController.getProfile2);
